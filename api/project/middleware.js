@@ -1,6 +1,5 @@
 const Projects = require('./model')
 
-
 const checkProjectId = async (req, res, next) => {
     try {
       const project = await Projects.getProjectById(req.params.id)
