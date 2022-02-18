@@ -1,3 +1,4 @@
+const dbConfig = require('../../data/dbConfig')
 const Resources = require('./model')
 
 const checkResourceId = async (req, res, next) => {
@@ -25,7 +26,24 @@ const checkResourcePayload = async (req, res, next) => {
     }
 }
 
+const checkResourceUnique = async (req, res, next) => {
+    try {
+        const existingResources = await dbConfig('resources')
+            .where('resource_name', req.body.resource_name).first()
+        if(existingResources) {
+            res.status(400).json({ 
+                message: `${req.body.resource_name} already exists as a resource`
+            })
+        } else {
+            next();
+        }
+    } catch(err) {
+        next(err)
+    }
+}
+
 module.exports = {
     checkResourceId,
-    checkResourcePayload
+    checkResourcePayload,
+    checkResourceUnique
 }
