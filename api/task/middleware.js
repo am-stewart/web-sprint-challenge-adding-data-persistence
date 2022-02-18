@@ -2,7 +2,7 @@ const Tasks = require('./model')
 
 const checkTaskId = async (req, res, next) => {
     try {
-        const task = await Tasks.getTaskById(req.params.id)
+        const task = await Tasks.getTaskByIdMiddleware(req.params.id)
         if (!task) {
             next({
                 status: 404,

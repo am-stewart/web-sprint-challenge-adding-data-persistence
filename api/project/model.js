@@ -18,9 +18,10 @@ const getProjects = async () => {
   })
 }
 
-// const getProjectById = (project_id) => {
-//     return db('projects').where('project_id', project_id).first()
-// }
+const getProjectByIdMiddleware = (project_id) => {
+    return db('projects').where('project_id', project_id).first()
+}
+
 const getProjectById = async (project_id) => {
     const project = await db('projects').where('project_id', project_id).first()
 
@@ -46,6 +47,7 @@ async function createProject(project) {
 
 module.exports = {
     getProjects,
+    getProjectByIdMiddleware,
     getProjectById,
     createProject
 }
