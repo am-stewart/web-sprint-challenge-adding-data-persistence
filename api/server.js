@@ -14,6 +14,7 @@ server.use('/api/projects', projectRouter)
 server.use('/api/resources', resourceRouter)
 server.use('/api/tasks', taskRouter)
 
+////CHANGE BEFORE SUBMITTING!!!!!!!!!
 server.use('*', (req, res, next) => {
     res.json('oh no!')
 })
