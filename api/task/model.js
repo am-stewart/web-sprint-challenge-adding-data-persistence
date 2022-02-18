@@ -8,8 +8,19 @@ const getTasks = () => {
         'p.project_name', 'p.project_description')
 }
 
+const getTaskById = (task_id) => {
+    return db('tasks').where('task_id', task_id).first()
+}
+
+async function createTask(task) {
+    const [task_id] = await db('tasks').insert(task)
+    return getTaskById(task_id)
+}
+
 module.exports = {
-    getTasks
+    getTasks,
+    getTaskById,
+    createTask
 }
 
 //

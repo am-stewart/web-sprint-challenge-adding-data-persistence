@@ -7,7 +7,7 @@ const checkProjectId = async (req, res, next) => {
       if (!project) {
         next({
           status: 404,
-          message: `project with id ${req.params.id} is not found`
+          message: `project with id ${req.params.id} does not exist`
         })
       } else {
         req.project = project
