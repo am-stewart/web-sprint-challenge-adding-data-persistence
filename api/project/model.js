@@ -1,4 +1,3 @@
-// build your `Project` model here
 const db = require('../../data/dbConfig')
 
 const getProjects = () => {
@@ -16,7 +15,7 @@ const getProjectById = (project_id) => {
     return db('projects').where('project_id', project_id).first()
 }
 
-async function create(project) {
+async function createProject(project) {
     const [project_id] = await db('projects').insert(project)
     return getProjectById(project_id)
 }
@@ -26,5 +25,5 @@ async function create(project) {
 module.exports = {
     getProjects,
     getProjectById,
-    create
+    createProject
 }

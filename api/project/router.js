@@ -18,7 +18,7 @@ router.get('/:id', checkProjectId, (req, res) => {
 
 router.post('/', checkProjectPayload, async (req, res, next) => {
     try {
-        const newProject = await Projects.create(req.body);
+        const newProject = await Projects.createProject(req.body);
         res.status(201).json(newProject)
     } catch(err) {
         next(err)
